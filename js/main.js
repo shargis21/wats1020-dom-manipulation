@@ -25,24 +25,17 @@ $( document ).ready(function() {
 $('.view-details').on('click', function(event){
     console.log(event);
     var targetElement = event.target;
-    //      1. When user clicks a "view details" button, find the parent of that element.
     var container = targetElement.parentElement.parentElement;
-    $(container).find('.details').each(function(index){
-    //      2. Within that parent, find all the elements that have the class `details`.
+    $(container).find('.details').each(function(index, el){
          if ($(el).is(':visible')){
              $(el).fadeOut();
-             targetElement.innerText = "View Details";
-             //      3. Toggle visibility of all the elements within that parent with the class `details`
-             
+             targetElement.innerText = "View Details";           
          } else {
              $(el).fadeIn();
              targetElement.innerText = "Hide Details";
-             //      4. Change the text of the "view details" button to read "hide details" so the user
-             //          understands they can hide the text again.
          }
     });
     });
-}
 
     // TODO: Create a function that listens for clicks on the voting buttons and
     // looks at the `data-vote` attribute on each button to see what was voted for,
